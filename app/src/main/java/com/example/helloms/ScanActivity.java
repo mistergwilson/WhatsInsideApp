@@ -7,12 +7,16 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.SurfaceView;
+import android.widget.ImageView;
 
 import com.moodstocks.android.AutoScannerSession;
 import com.moodstocks.android.MoodstocksError;
 import com.moodstocks.android.Result;
 import com.moodstocks.android.Scanner;
+
+import java.io.Console;
 
 public class ScanActivity extends Activity implements AutoScannerSession.Listener {
 
@@ -59,19 +63,41 @@ public class ScanActivity extends Activity implements AutoScannerSession.Listene
 
   @Override
   public void onResult(Result result) {
-    AlertDialog.Builder builder = new AlertDialog.Builder(this);
-    builder.setCancelable(false);
-    builder.setNeutralButton("OK", new OnClickListener() {
-      @Override
-      public void onClick(DialogInterface dialog, int which) {
-        session.resume();
-      }
-    });
-    builder.setTitle(result.getType() == Result.Type.IMAGE ? "Image:" : "Barcode:");
-    builder.setMessage(result.getValue());
-    builder.show();
-    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=yNYJG3WFPak"));
-    startActivity(browserIntent);
+       String item = result.getValue();
+       ImageView image = (ImageView) findViewById(R.id.imageView);
+       if (item.equals("coke")) {
+           AlertDialog.Builder builder = new AlertDialog.Builder(this);
+           builder.setCancelable(false);
+           builder.setNeutralButton("OK", new OnClickListener() {
+               @Override
+               public void onClick(DialogInterface dialog, int which) {
+                   session.resume();
+               }
+           });
+           builder.setPositiveButton("Video", new DialogInterface.OnClickListener() {
+               public void onClick(DialogInterface dialog, int id) {
+                   Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=yNYJG3WFPak"));
+                   startActivity(browserIntent);
+               }
+           });
+           //builder.setTitle(result.getType() == Result.Type.IMAGE ? "Image:" : "Barcode:");
+           builder.setMessage("Ingredients: Carbonated water, Sugar, Caffeine, Phosphoric acid, Caramel color, and natural flavors");
+           builder.show();
+       }
+      else if (item.equals("moto360")) {
+           AlertDialog.Builder builder = new AlertDialog.Builder(this);
+           LayoutInflater inflater = this.getLayoutInflater();
+           builder.setView(inflater.inflate(R.layout.inside, null))
+                   .setCancelable(false)
+                   .setNeutralButton("OK", new OnClickListener() {
+                       @Override
+                       public void onClick(DialogInterface dialog, int which) {
+                           session.resume();
+                       }
+                   });
+           builder.show();
+
+       }
   }
 
 }
