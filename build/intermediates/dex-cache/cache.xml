@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/mistergwilson/HelloMS-Android-Auto/app/libs/moodstocks.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="8a51c1348449f275162f692ff502aa2f477207e6">
+        <dex dex="/Users/mistergwilson/HelloMS-Android-Auto/app/build/intermediates/pre-dexed/debug/moodstocks-d227bce6f777c149d1c58922c17764224ce92687.jar" />
+    </item>
+
+</items>
