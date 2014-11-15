@@ -65,7 +65,7 @@ public class ScanActivity extends Activity implements AutoScannerSession.Listene
   public void onResult(Result result) {
        String item = result.getValue();
        ImageView image = (ImageView) findViewById(R.id.imageView);
-       if (item.equals("coke")) {
+       if (item.equals("coke") || item.equals("coke2")) {
            AlertDialog.Builder builder = new AlertDialog.Builder(this);
            builder.setCancelable(false);
            builder.setNeutralButton("OK", new OnClickListener() {
@@ -84,7 +84,7 @@ public class ScanActivity extends Activity implements AutoScannerSession.Listene
            builder.setMessage("Ingredients: Carbonated water, Sugar, Caffeine, Phosphoric acid, Caramel color, and natural flavors");
            builder.show();
        }
-      else if (item.equals("moto360")) {
+      else if (item.equals("moto360") || item.equals("moto3602")) {
            AlertDialog.Builder builder = new AlertDialog.Builder(this);
            LayoutInflater inflater = this.getLayoutInflater();
            builder.setView(inflater.inflate(R.layout.inside, null))
@@ -98,6 +98,33 @@ public class ScanActivity extends Activity implements AutoScannerSession.Listene
            builder.show();
 
        }
+       else if (item.equals("ipad")) {
+           AlertDialog.Builder builder = new AlertDialog.Builder(this);
+           LayoutInflater inflater = this.getLayoutInflater();
+           builder.setView(inflater.inflate(R.layout.ipad, null))
+                   .setCancelable(false)
+                   .setNeutralButton("OK", new OnClickListener() {
+                       @Override
+                       public void onClick(DialogInterface dialog, int which) {
+                           session.resume();
+                       }
+                   });
+           builder.show();
+
+       }
+      else if (item.equals("water")) {
+          AlertDialog.Builder builder = new AlertDialog.Builder(this);
+          builder.setCancelable(false);
+          builder.setNeutralButton("OK", new OnClickListener() {
+              @Override
+              public void onClick(DialogInterface dialog, int which) {
+                  session.resume();
+              }
+          });
+          //builder.setTitle(result.getType() == Result.Type.IMAGE ? "Image:" : "Barcode:");
+          builder.setMessage("Ingredients: H2O");
+          builder.show();
+      }
   }
 
 }

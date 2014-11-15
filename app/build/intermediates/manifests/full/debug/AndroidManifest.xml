@@ -25,7 +25,7 @@
         android:label="@string/app_name" >
         <activity
             android:name="com.example.helloms.MainActivity"
-            android:label="@string/app_name" >
+            android:label="What&apos;s Inside?" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -35,7 +35,7 @@
         <activity
             android:name="com.example.helloms.ScanActivity"
             android:configChanges="orientation|screenSize"
-            android:label="@string/title_activity_scan" >
+            android:label="What&apos;s Inside?" >
         </activity>
     </application>
 

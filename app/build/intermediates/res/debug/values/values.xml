@@ -2,6 +2,6 @@
 <resources>
     <!-- From: file:/Users/mistergwilson/HelloMS-Android-Auto/app/src/main/res/values/strings.xml -->
     <eat-comment/>
-    <string name="app_name">HelloMS</string>
-    <string name="title_activity_scan">ScanActivity</string>
+    <string name="app_name">What\'s Inside?</string>
+    <string name="title_activity_scan">What\'s Inside?</string>
 </resources>
